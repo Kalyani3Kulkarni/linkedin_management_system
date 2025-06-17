@@ -20,7 +20,10 @@ class Settings(BaseSettings):
     api_reload: bool = False
     
     # Database
-    database_url: str = "sqlite:///./linkedin_management.db"
+    database_url: str = Field(
+        default="sqlite:///./linkedin_management.db",
+        env="DATABASE_URL"
+    )
     
     # OpenAI API
     openai_api_key: str = Field(..., env="OPENAI_API_KEY")
